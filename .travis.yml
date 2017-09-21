@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - stable
+before_install:
+  - yarn config set registry "https://registry.npmjs.org"
+script:
+  - yarn run test
