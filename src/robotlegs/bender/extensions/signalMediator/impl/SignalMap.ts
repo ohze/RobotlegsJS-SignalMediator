@@ -9,15 +9,7 @@ export class SignalMap implements ISignalMap {
     /* Protected Properties                                                       */
     /*============================================================================*/
 
-    protected _handlersBySignal: Map<ISignal, Array<Function>>;
-
-    /*============================================================================*/
-    /* Constructor                                                                */
-    /*============================================================================*/
-
-    constructor() {
-        this._handlersBySignal = new Map();
-    }
+    protected _handlersBySignal: Map<ISignal, Array<Function>> = new Map();
 
     /*============================================================================*/
     /* Public Functions                                                           */
@@ -40,14 +32,16 @@ export class SignalMap implements ISignalMap {
     removeFromSignal(signal: any, handler: Function): void {
         signal.remove(handler);
 
-        if ((this._handlersBySignal[signal] == null) || (this._handlersBySignal[signal].length == 0)) {
+        const oldHandlers = this._handlersBySignal.get(signal);
+
+        if (oldHandlers == undefined || oldHandlers.length == 0) {
             return;
         }
 
-        let handlerIndex = this._handlersBySignal[signal].indexOf(handler);
+        const handlerIndex = oldHandlers.indexOf(handler);
 
         if (handlerIndex > -1) {
-            this._handlersBySignal[signal].splice(handlerIndex, 1);
+            oldHandlers.splice(handlerIndex, 1);
         }
     }
 
@@ -56,12 +50,10 @@ export class SignalMap implements ISignalMap {
      */
     removeAll(): void {
         this._handlersBySignal.forEach(
-            (handlers, signal) => handlers.forEach((handler) => signal.remove(handler))
+            (handlers, signal) => handlers.forEach(handler => signal.remove(handler))
         );
 
         this._handlersBySignal.clear();
-
-        this._handlersBySignal = new Map();
     }
 
     /*============================================================================*/
@@ -69,7 +61,7 @@ export class SignalMap implements ISignalMap {
     /*============================================================================*/
 
     protected storeSignalHandler(signal: any, handler: Function): void {
-        if (this._handlersBySignal.get(signal) == null) {
+        if (!this._handlersBySignal.has(signal)) {
             this._handlersBySignal.set(signal, [handler]);
         } else {
             this._handlersBySignal.get(signal).push(handler);
