@@ -1,3 +1,10 @@
+//------------------------------------------------------------------------------
+// Copyright (c) 2017 San Dinh Studios. All Rights Reserved.
+//
+// NOTICE: You are permitted to use, modify, and distribute this file
+// in accordance with the terms of the license agreement accompanying it.
+//------------------------------------------------------------------------------
+
 import { injectable } from "robotlegs";
 import { ISignalMap } from "../api/ISignalMap";
 import { ISignal } from "signals.js";
