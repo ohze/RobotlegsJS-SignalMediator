@@ -1,6 +1,6 @@
 {
-  "name": "robotlegs-signalmediator",
-  "version": "1.0.0",
+  "name": "@ohze/robotlegs-signalmediator",
+  "version": "1.0.1",
   "description": "TypeScript port of Robotlegs Extensions SignalMediator",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -10,7 +10,9 @@
     "autoformat": "tsfmt -r",
     "clean-up-win": "rmdir coverage /s /q && rmdir lib /s /q",
     "clean-up": "rm -rf coverage lib",
-    "prepack": "npm run autoformat && npm run clean-up && tsc -d"
+    "prepare": "npm run clean-up && tsc -d",
+    "prepublishOnly": "publish-please guard",
+    "publish-please": "npm run autoformat && publish-please"
   },
   "repository": {
     "type": "git",
