@@ -1,9 +1,9 @@
 .idea
-build
+/build
 node_modules
-typings
-coverage
-src/**/*.js
-test/**/*.js
+/coverage
+/lib
+/src/**/*.js
+/test/**/*.js
 *.js.map
 npm-debug.log
