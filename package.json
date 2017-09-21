@@ -1,19 +1,20 @@
 {
   "name": "robotlegs-signalmediator",
-  "version": "1.0.0-alpha.7",
+  "version": "1.0.0",
   "description": "TypeScript port of Robotlegs Extensions SignalMediator",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
-    "test": "karma start",
+    "test": "karma start --single-run",
     "mocha": "mocha test/**/*.test.ts --require ts-node/register",
     "autoformat": "tsfmt -r",
-    "clean-up": "rmdir coverage /s /q && rmdir lib /s /q",
+    "clean-up-win": "rmdir coverage /s /q && rmdir lib /s /q",
+    "clean-up": "rm -rf coverage lib",
     "publish-please": "npm run autoformat && npm run clean-up && publish"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cuongdd2/RobotlegsJS-SignalMediator.git"
+    "url": "https://github.com/ohze/RobotlegsJS-SignalMediator.git"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -25,63 +26,59 @@
   ],
   "author": "Do Duc Cuong",
   "contributors": [
-    "Do Duc Cuong <cuongdd2@gmail.com>"
+    "Do Duc Cuong <cuongdd2@gmail.com>",
+    "Bùi Việt Thành <thanhbv@sandinh.net>"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cuongdd2/RobotlegsJS-SignalMediator/issues"
+    "url": "https://github.com/ohze/RobotlegsJS-SignalMediator/issues"
   },
-  "homepage": "https://github.com/cuongdd2/RobotlegsJS-SignalMediator#readme",
+  "homepage": "https://github.com/ohze/RobotlegsJS-SignalMediator#readme",
   "dependencies": {
-    "robotlegs": "1.0.1",
-    "robotlegs-pixi": "1.0.0",
-    "signals.js": "1.0.2"
+    "robotlegs": "^1.0.1",
+    "robotlegs-pixi": "^1.0.0",
+    "signals.js": "^1.0.2"
   },
   "devDependencies": {
-    "@types/bluebird": "^3.0.35",
-    "@types/chai": "^3.4.34",
-    "@types/mocha": "^2.2.32",
-    "@types/sinon": "^1.16.31",
-    "bluebird": "^3.4.6",
+    "@types/bluebird": "^3.5.8",
+    "@types/chai": "^4.0.1",
+    "@types/mocha": "^2.2.41",
+    "@types/sinon": "^2.3.3",
+    "bluebird": "^3.5.0",
     "browserify-versionify": "^1.0.6",
-    "chai": "^3.5.0",
-    "es6-map": "^0.1.4",
-    "es6-symbol": "^3.1.0",
-    "glslify": "^6.0.1",
-    "imports-loader": "^0.6.5",
-    "istanbul": "^1.1.0-alpha.1",
-    "istanbul-instrumenter-loader": "^0.2.0",
-    "karma": "^1.3.0",
+    "chai": "^4.1.0",
+    "core-js": "^2.5.1",
+    "glslify": "^6.1.0",
+    "imports-loader": "^0.7.1",
+    "istanbul": "^0.4.5",
+    "istanbul-instrumenter-loader": "^3.0.0",
+    "karma": "^1.7.0",
     "karma-chai": "^0.1.0",
     "karma-chai-sinon": "^0.1.5",
-    "karma-chrome-launcher": "^2.0.0",
-    "karma-coverage": "^1.1.1",
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-coverage-istanbul-reporter": "^1.3.0",
     "karma-es6-shim": "^1.0.0",
-    "karma-jasmine": "^1.0.2",
+    "karma-jasmine": "^1.1.0",
     "karma-mocha": "^1.3.0",
-    "karma-mocha-reporter": "^2.2.0",
-    "karma-phantomjs-launcher": "^1.0.2",
-    "karma-remap-istanbul": "^0.2.1",
+    "karma-mocha-reporter": "^2.2.3",
+    "karma-phantomjs-launcher": "^1.0.4",
+    "karma-remap-istanbul": "^0.6.0",
     "karma-sinon": "^1.0.5",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-sourcemap-writer": "^0.1.2",
-    "karma-webpack": "^1.8.0",
-    "mocha": "^3.1.2",
-    "reflect-metadata": "^0.1.8",
-    "remap-istanbul": "^0.7.0",
-    "rimraf": "^2.5.4",
-    "sinon": "^2.0.0-pre.4",
-    "sinon-chai": "^2.8.0",
-    "ts-loader": "^1.2.0",
-    "ts-node": "^1.7.0",
-    "tslint": "^3.15.1",
-    "typedoc": "^0.5.1",
-    "typescript": "^2.2.0-dev.20161111",
-    "typescript-formatter": "^4.0.0",
-    "webpack": "^2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.10"
-  },
-  "peerDependencies": {
-    "reflect-metadata": "^0.1.8"
+    "karma-webpack": "^2.0.4",
+    "mocha": "^3.4.2",
+    "publish-please": "^2.3.1",
+    "remap-istanbul": "^0.9.5",
+    "rimraf": "^2.6.1",
+    "sinon": "^2.4.1",
+    "sinon-chai": "^2.12.0",
+    "ts-loader": "^2.3.2",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.5.0",
+    "typescript": "^2.5.2",
+    "typescript-formatter": "^5.2.0",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
   }
 }

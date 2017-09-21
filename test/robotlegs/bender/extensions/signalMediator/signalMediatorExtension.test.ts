@@ -33,11 +33,13 @@ describe("SignalMediatorExtension", () => {
             actual = context.injector.get(ISignalMap);
         });
         context.initialize();
+        assert.isNotNull(actual);
         assert.instanceOf(actual, SignalMap);
     });
 
     it("chained injections pass through injection targets", () => {
         context.install(SignalMediatorExtension);
+        context.injector.bind(RelaySignal).toConstantValue(new RelaySignal());
         context.initialize();
 
         let instance: ISignalMap = context.injector.get<ISignalMap>(ISignalMap);

@@ -18,13 +18,10 @@ module.exports = function (config) {
             "es6-shim"
         ],
         files: [
-            "./test/**/**/**.test.ts",
-            {
-                pattern: '**/*.map',
-                served: true,
-                included: false,
-                watched: true
-            }
+            {pattern: "node_modules/core-js/client/shim.js", include: true},
+            {pattern: "node_modules/bluebird/js/browser/bluebird.js", include: true},
+            {pattern: "./test/**/**/**.test.ts", include: true},
+            {pattern: '**/*.map', served: true, included: false, watched: true}
         ],
         preprocessors: {
             "./**/**/**/**.ts": ["sourcemap"],
@@ -44,34 +41,36 @@ module.exports = function (config) {
             "karma-chai",
             "karma-sinon",
             "karma-es6-shim",
-            "karma-coverage"
+            "karma-coverage-istanbul-reporter"
         ],
-        reporters: (config.singleRun
-            ? ["dots", "mocha", "coverage"]
-            : ["dots", "mocha"]),
-        coverageReporter: {
+        reporters: (
+            config.singleRun ?
+                ["dots", "mocha", "coverage-istanbul"] :
+                ["dots", "mocha"]
+        ),
+        coverageIstanbulReporter: {
+            reports: ["html", "lcov", "lcovonly", "text-summary"],
             dir: "coverage",
-            reporters: [
-                {type: 'html', subdir: 'report-html'},
-                {type: 'lcov', subdir: 'report-lcov'}
-            ],
-            instrumenterOptions: {
-                istanbul: {noCompact: true}
+            fixWebpackSourcePaths: true,
+            "report-config": {
+                html: {
+                    subdir: "html-report"
+                }
             }
         },
         port: 9876,
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['Chrome']
+        browsers: []
     };
 
     if (process.env.TRAVIS) {
         configuration.browsers = ['PhantomJS'];
         configuration.plugins.push("karma-phantomjs-launcher");
     } else {
-        configuration.browsers = ['Chrome'];
-        configuration.plugins.push("karma-chrome-launcher");
+        configuration.browsers = ['PhantomJS'];
+        configuration.plugins.push("karma-phantomjs-launcher");
     }
 
     config.set(configuration);
