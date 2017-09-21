@@ -27,3 +27,5 @@ webpack.config.js
 .npmignore
 .publishrc
 .travis.yml
+/package-lock.json
+/yarn.lock
