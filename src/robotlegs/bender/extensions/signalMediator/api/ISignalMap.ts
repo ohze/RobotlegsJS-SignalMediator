@@ -1,4 +1,4 @@
-import {ISignal} from "signals.js";
+import { ISignal } from "signals.js";
 
 /**
  * The Signal Map allows you to bind Signals to functions

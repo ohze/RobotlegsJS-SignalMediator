@@ -1,6 +1,6 @@
-import {injectable} from "robotlegs";
-import {ISignalMap} from "../api/ISignalMap";
-import {ISignal} from "signals.js";
+import { injectable } from "robotlegs";
+import { ISignalMap } from "../api/ISignalMap";
+import { ISignal } from "signals.js";
 
 @injectable()
 export class SignalMap implements ISignalMap {
