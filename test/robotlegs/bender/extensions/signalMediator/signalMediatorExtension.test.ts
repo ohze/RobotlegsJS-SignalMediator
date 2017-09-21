@@ -6,13 +6,13 @@
 //------------------------------------------------------------------------------
 
 import "../../../../entry.ts";
-import {assert} from "chai";
-import {Context} from "@robotlegsjs/core";
-import {SignalMediatorExtension} from "../../../../../src/robotlegs/bender/extensions/signalMediator/SignalMediatorExtension";
-import {ISignalMap} from "../../../../../src/robotlegs/bender/extensions/signalMediator/api/ISignalMap";
-import {SignalMap} from "../../../../../src/robotlegs/bender/extensions/signalMediator/impl/SignalMap";
-import {RelaySignal} from "./support/Signals";
-import {Data} from "./support/Data";
+import { assert } from "chai";
+import { Context } from "@robotlegsjs/core";
+import { SignalMediatorExtension } from "../../../../../src/robotlegs/bender/extensions/signalMediator/SignalMediatorExtension";
+import { ISignalMap } from "../../../../../src/robotlegs/bender/extensions/signalMediator/api/ISignalMap";
+import { SignalMap } from "../../../../../src/robotlegs/bender/extensions/signalMediator/impl/SignalMap";
+import { RelaySignal } from "./support/Signals";
+import { Data } from "./support/Data";
 
 describe("SignalMediatorExtension", () => {
 
@@ -36,7 +36,7 @@ describe("SignalMediatorExtension", () => {
     it("signalMap is mapped into injector", () => {
         let actual: Object = null;
         context.install(SignalMediatorExtension);
-        context.whenInitializing(function (): void {
+        context.whenInitializing(function(): void {
             actual = context.injector.get(ISignalMap);
         });
         context.initialize();
